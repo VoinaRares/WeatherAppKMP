@@ -13,8 +13,9 @@ import kotlinx.serialization.json.Json
 // Platform provides the engine (Android uses OkHttp/HttpURLConnection, iOS uses Darwin/NSURLSession)
 expect fun platformHttpClientEngine(): HttpClientEngine
 
-// All client configuration lives in common code — only the engine is platform-specific
-fun createHttpClient(): HttpClient = HttpClient(platformHttpClientEngine()) {
+// Default argument means production code calls createHttpClient() unchanged.
+// Tests pass a MockEngine to avoid network access.
+fun createHttpClient(engine: HttpClientEngine = platformHttpClientEngine()): HttpClient = HttpClient(engine) {
     install(ContentNegotiation) {
         json(Json {
             ignoreUnknownKeys = true

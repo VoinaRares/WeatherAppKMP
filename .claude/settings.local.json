@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/voina/.claude/projects/c--Proiecte-Kotlin-Multiplatform-KotlinTests-KotlinProject/**)"
+    ]
+  }
+}
